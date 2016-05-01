@@ -1,5 +1,6 @@
 # steps to reproduce the problem
 
+0. `docker-compose up` to start the jobserver in version 0.6.2
 1. create a hive context `curl -d "" "jobserverUrl:8090/contexts/hive-context?context-factory=spark.jobserver.context.HiveContextFactory"`
 2. upload the jar
 	1. `sbt assembly`

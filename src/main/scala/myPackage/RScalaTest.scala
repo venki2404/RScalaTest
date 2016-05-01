@@ -1,23 +1,24 @@
 package myPackage
 
 import breeze.linalg.DenseVector
-import breeze.stats.distributions.{ Poisson, Uniform }
+import breeze.stats.distributions.{Poisson, Uniform}
 import com.typesafe.config.Config
-import org.apache.spark.sql.SQLContext
-import org.apache.spark.{ SparkConf, SparkContext }
+import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.{SparkConf, SparkContext}
 import org.ddahl.rscala.callback.RClient
-import spark.jobserver.{ SparkJobValid, SparkJobValidation, SparkSqlJob }
+import spark.jobserver.{SparkHiveJob, SparkJobValid, SparkJobValidation}
 
 case class Student(name: String, age: Int)
-object RScalaTest extends SparkSqlJob {
 
-  def validate(sql: SQLContext, config: Config): SparkJobValidation = SparkJobValid
+object RScalaTest extends SparkHiveJob {
 
-  def runJob(sql: SQLContext, config: Config): Any = {
+  def validate(sql: HiveContext, config: Config): SparkJobValidation = SparkJobValid
+
+  def runJob(sql: HiveContext, config: Config): Any = {
     executePayload(sql)
   }
 
-  def executePayload(sql: SQLContext): Any = {
+  def executePayload(sql: HiveContext): Any = {
     import sql.implicits._
 
     val studentsDataSet = Seq(Student("Torcuato", 27), Student("Rosalinda", 34)).toDS()
@@ -46,7 +47,7 @@ object RScalaTest extends SparkSqlJob {
   def main(args: Array[String]) = {
     val conf = new SparkConf().setAppName("localTest").setMaster("local[*]")
     val sc = new SparkContext(conf)
-    val sql = new SQLContext(sc)
+    val sql = new HiveContext(sc)
 
     executePayload(sql)
     sc.stop
