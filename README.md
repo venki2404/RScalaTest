@@ -1,6 +1,13 @@
-# steps to reproduce the problem with scala 2.10
+# steps to reproduce the problem
 
-1. 'sbt assembly'
+0. `docker-compose up` to start the jobserver in version 0.6.2
+1. create a hive context `curl -d "" "jobserverUrl:8090/contexts/hive-context?context-factory=spark.jobserver.context.HiveContextFactory"`
+2. upload the jar
+	0. for the 2.10 problems (locally) make sure to not set the provided scope in `build.sbt` to keep the size of the assembled jar small use the provided scope when testing on the job server
+	1. `sbt assembly`
+	2. upload `curl --data-binary @target/scala-2.10/RScalaTest-assembly-0.0.1.SNAPSHOT.jar jobseverUrl:8090/jars/jobs`
+	
+3. execute the job
 
 This is the error message:
 
