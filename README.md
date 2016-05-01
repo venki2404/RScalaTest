@@ -17,4 +17,16 @@ This is the error message:
 
 execute `sbt run`
 
-Which should complete successfully
+Which should complete successfully. However, for a scala version of 2.10
+This is clashing locally with
+```
+ R.type (with underlying type org.ddahl.rscala.callback.RClient)
+[error]  required: ?{def x: ?}
+[error] Note that implicit conversions are not applicable because they are ambiguous:
+[error]  both method any2Ensuring in object Predef of type [A](x: A)Ensuring[A]
+[error]  and method any2ArrowAssoc in object Predef of type [A](x: A)ArrowAssoc[A]
+[error]  are possible conversion functions from R.type to ?{def x: ?}
+[error]     R.x = x.toArray // send x to R
+```
+which I could not solve yet.
+When using 2.11 
