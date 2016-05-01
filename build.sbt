@@ -2,7 +2,7 @@ name := "RScalaTest"
 organization := "main.RScalaTest"
 version := "0.0.1.SNAPSHOT"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 scalacOptions ++= Seq("-deprecation")
 lazy val spark = "1.6.1"
@@ -10,12 +10,12 @@ lazy val spark = "1.6.1"
 resolvers += "Job Server Bintray" at "https://dl.bintray.com/spark-jobserver/maven"
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % spark % "provided",
-  "org.apache.spark" %% "spark-hive" % spark % "provided",
-  "org.apache.spark" %% "spark-sql" % spark % "provided",
-  "org.apache.spark" %% "spark-mllib" % spark % "provided",
-  "spark.jobserver" %% "job-server-api" % "0.6.1" % "provided",
-  "spark.jobserver" %% "job-server-extras" % "0.6.1" % "provided"
+  "org.apache.spark" %% "spark-core" % spark,
+  "org.apache.spark" %% "spark-hive" % spark,
+  "org.apache.spark" %% "spark-sql" % spark,
+  "org.apache.spark" %% "spark-mllib" % spark,
+  "spark.jobserver" %% "job-server-api" % "0.6.1",
+  "spark.jobserver" %% "job-server-extras" % "0.6.1"
 )
 
 unmanagedJars in Compile += file("lib/rscala_2.11-1.0.9.jar")
