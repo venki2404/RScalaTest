@@ -11,7 +11,16 @@
 This is the error message from the server when using 2.11 scala version:
 
 ```
-TODO
+java.lang.NoSuchMethodError: scala.reflect.api.JavaUniverse.runtimeMirror(Ljava/lang/ClassLoader;)Lscala/reflect/api/JavaUniverse$JavaMirror;
+    at myPackage.RScalaTest$.executePayload(RScalaTest.scala:24)
+    at myPackage.RScalaTest$.runJob(RScalaTest.scala:18)
+    at myPackage.RScalaTest$.runJob(RScalaTest.scala:13)
+    at spark.jobserver.JobManagerActor$$anonfun$spark$jobserver$JobManagerActor$$getJobFuture$4.apply(JobManagerActor.scala:301)
+    at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+    at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+    at java.lang.Thread.run(Thread.java:745)
 ```
 
 For 2.10 scala we get the following error which we could not resolve and thus triggered us to use scala 2.11
