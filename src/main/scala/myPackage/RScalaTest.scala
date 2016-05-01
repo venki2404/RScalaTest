@@ -1,12 +1,12 @@
 package myPackage
 
 import breeze.linalg.DenseVector
-import breeze.stats.distributions.{Poisson, Uniform}
+import breeze.stats.distributions.{ Poisson, Uniform }
 import com.typesafe.config.Config
 import org.apache.spark.sql.hive.HiveContext
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.{ SparkConf, SparkContext }
 import org.ddahl.rscala.callback.RClient
-import spark.jobserver.{SparkHiveJob, SparkJobValid, SparkJobValidation}
+import spark.jobserver.{ SparkHiveJob, SparkJobValid, SparkJobValidation }
 
 case class Student(name: String, age: Int)
 
