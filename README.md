@@ -4,9 +4,9 @@
 1. create a hive context `curl -d "" "jobserverUrl:8090/contexts/hive-context?context-factory=spark.jobserver.context.HiveContextFactory"`
 2. upload the jar
 	1. `sbt assembly`
-	2. upload `curl --data-binary @target/scala-2.10/RScalaTest-assembly-0.0.1.SNAPSHOT.jar jobseverUrl:8090/jars/jobs`
+	2. upload `curl --data-binary @target/scala-2.11/RScalaTest-assembly-0.0.1.SNAPSHOT.jar jobseverUrl:8090/jars/jobs`
 	
-3. execute the job
+3. execute the job with 'curl -d "" "192.168.99.100:8091/jobs?appName=jobs&classPath=myPackage.RScalaTest&context=hive-context"'
 
 This is the error message from the server when using 2.11 scala version:
 
