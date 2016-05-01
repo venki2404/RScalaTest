@@ -2,7 +2,7 @@ name := "RScalaTest"
 organization := "main.RScalaTest"
 version := "0.0.1.SNAPSHOT"
 
-scalaVersion := "2.10.6"
+scalaVersion := "2.11.7"
 
 scalacOptions ++= Seq("-deprecation")
 lazy val spark = "1.6.1"
@@ -18,7 +18,7 @@ libraryDependencies ++= Seq(
   "spark.jobserver" %% "job-server-extras" % "0.6.1" % "provided"
 )
 
-unmanagedJars in Compile += file("lib/rscala_2.10-1.0.9.jar")
+unmanagedJars in Compile += file("lib/rscala_2.11-1.0.9.jar")
 
 assemblyMergeStrategy in assembly := {
   case PathList(ps@_*) if ps.last endsWith "Console.class" => MergeStrategy.first
